@@ -11,6 +11,7 @@ void setup() {
   servo.attach(servoPin);
   servo.write(angle);
   pinMode(buttonPin,INPUT);
+  pinMode(12,OUTPUT);
 }
 void loop() {
   buttonState = digitalRead(buttonPin); // checando se o botão ta apertado
@@ -19,8 +20,10 @@ void loop() {
     servoPosition = !servoPosition;
     if (servoPosition) {
       servo.write(90);
+      digitalWrite(12,HIGH);
     } else {
       servo.write(0);
+      digitalWrite(12,LOW);
     }
     delay(200);
   }
